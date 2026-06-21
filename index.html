@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Why Hire Me — Kharee Bellamy</title>
+<meta name="description" content="Self-taught cloud engineer. AWS certified. Built in public. This site is the proof.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-void:#0B0E14;
+    --bg-card:#12161F;
+    --bg-card-hover:#161B26;
+    --accent-violet:#6C5CE7;
+    --accent-flame:#FF6B4A;
+    --accent-acid:#B4FF39;
+    --text-primary:#F2F0EB;
+    --text-muted:#8B92A6;
+    --border:rgba(242,240,235,0.08);
+    --display: 'Space Grotesk', sans-serif;
+    --body: 'Inter', sans-serif;
+    --mono: 'JetBrains Mono', monospace;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.01ms !important; transition-duration:0.01ms !important;}
+  }
+
+  body{
+    background:var(--bg-void);
+    color:var(--text-primary);
+    font-family:var(--body);
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+
+  a{color:inherit;text-decoration:none;}
+  :focus-visible{outline:2px solid var(--accent-acid); outline-offset:3px;}
+
+  .wrap{max-width:1100px; margin:0 auto; padding:0 24px;}
+
+  /* background texture */
+  body::before{
+    content:"";
+    position:fixed; inset:0;
+    background:
+      radial-gradient(circle at 15% 10%, rgba(108,92,231,0.14), transparent 45%),
+      radial-gradient(circle at 85% 30%, rgba(255,107,74,0.10), transparent 40%);
+    pointer-events:none;
+    z-index:0;
+  }
+
+  /* NAV */
+  nav{
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    background:rgba(11,14,20,0.82);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--border);
+  }
+  .nav-inner{
+    max-width:1100px; margin:0 auto; padding:16px 24px;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .logo{
+    font-family:var(--mono); font-size:14px; font-weight:600;
+    letter-spacing:0.02em;
+  }
+  .logo span{color:var(--accent-violet);}
+  .nav-links{display:flex; align-items:center; gap:28px; font-size:14px;}
+  .nav-links a{color:var(--text-muted); transition:color 0.2s;}
+  .nav-links a:hover{color:var(--text-primary);}
+  .status{
+    display:flex; align-items:center; gap:7px;
+    font-family:var(--mono); font-size:12px; color:var(--accent-acid);
+  }
+  .status-dot{
+    width:7px; height:7px; border-radius:50%; background:var(--accent-acid);
+    box-shadow:0 0 8px var(--accent-acid);
+    animation:pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.4;}}
+  .nav-toggle{display:none; background:none; border:none; color:var(--text-primary); font-size:22px; cursor:pointer;}
+
+  @media (max-width:720px){
+    .nav-links{
+      position:fixed; top:57px; left:0; right:0;
+      background:var(--bg-void); border-bottom:1px solid var(--border);
+      flex-direction:column; align-items:flex-start; gap:0;
+      max-height:0; overflow:hidden; transition:max-height 0.25s ease;
+    }
+    .nav-links.open{max-height:300px;}
+    .nav-links a{padding:14px 24px; width:100%; border-bottom:1px solid var(--border);}
+    .nav-toggle{display:block;}
+    .status{display:none;}
+  }
+
+  section{position:relative; z-index:1; padding:120px 0 80px;}
+
+  /* HERO */
+  .hero{padding-top:160px; min-height:90vh; display:flex; align-items:center;}
+  .hero-grid{
+    display:grid; grid-template-columns:1.1fr 0.9fr; gap:56px; align-items:center; width:100%;
+  }
+  @media (max-width:880px){.hero-grid{grid-template-columns:1fr; gap:40px;}}
+
+  .eyebrow{
+    font-family:var(--mono); font-size:13px; color:var(--accent-acid);
+    letter-spacing:0.08em; text-transform:uppercase; margin-bottom:18px;
+    display:flex; align-items:center; gap:8px;
+  }
+  h1{
+    font-family:var(--display); font-weight:700;
+    font-size:clamp(2.4rem, 5.5vw, 3.8rem);
+    line-height:1.08; letter-spacing:-0.01em;
+    margin-bottom:22px;
+  }
+  h1 .accent{color:var(--accent-violet);}
+  .hero p.lede{
+    font-size:clamp(1rem, 1.6vw, 1.15rem); color:var(--text-muted); max-width:50ch; margin-bottom:32px;
+  }
+  .btn-row{display:flex; gap:14px; flex-wrap:wrap;}
+  .btn{
+    font-family:var(--body); font-weight:600; font-size:14px;
+    padding:13px 24px; border-radius:8px; cursor:pointer; border:1px solid transparent;
+    transition:transform 0.15s ease, background 0.2s ease;
+  }
+  .btn:hover{transform:translateY(-2px);}
+  .btn-primary{background:var(--accent-violet); color:#fff;}
+  .btn-primary:hover{background:#7d6ef0;}
+  .btn-ghost{background:transparent; border-color:var(--border); color:var(--text-primary);}
+  .btn-ghost:hover{border-color:var(--text-muted);}
+
+  /* console card */
+  .console{
+    background:var(--bg-card); border:1px solid var(--border); border-radius:12px;
+    overflow:hidden; box-shadow:0 30px 60px -20px rgba(0,0,0,0.6);
+  }
+  .console-bar{
+    display:flex; align-items:center; gap:7px; padding:12px 16px;
+    border-bottom:1px solid var(--border); background:rgba(255,255,255,0.02);
+  }
+  .console-bar .dot{width:10px; height:10px; border-radius:50%;}
+  .console-bar .dot:nth-child(1){background:#FF5F57;}
+  .console-bar .dot:nth-child(2){background:#FEBC2E;}
+  .console-bar .dot:nth-child(3){background:#28C840;}
+  .console-bar .path{
+    margin-left:10px; font-family:var(--mono); font-size:12px; color:var(--text-muted);
+  }
+  .console-body{padding:22px 20px; font-family:var(--mono); font-size:13.5px; line-height:1.85;}
+  .console-body .k{color:var(--accent-flame);}
+  .console-body .s{color:var(--accent-acid);}
+  .console-body .punc{color:var(--text-muted);}
+  .console-body .arr{color:#8B92A6;}
+  .cursor{display:inline-block; width:7px; height:15px; background:var(--accent-acid); animation:blink 1s step-end infinite; vertical-align:middle;}
+  @keyframes blink{50%{opacity:0;}}
+
+  /* SECTION HEADERS */
+  .section-head{margin-bottom:48px;}
+  .section-num{font-family:var(--mono); font-size:13px; color:var(--accent-violet); margin-bottom:10px;}
+  h2{font-family:var(--display); font-weight:700; font-size:clamp(1.8rem,4vw,2.5rem); letter-spacing:-0.01em;}
+  .section-sub{color:var(--text-muted); margin-top:10px; max-width:60ch;}
+
+  /* STORY */
+  .timeline{position:relative;}
+  .timeline::before{
+    content:""; position:absolute; left:27px; top:8px; bottom:8px; width:1px;
+    background:linear-gradient(var(--accent-violet), transparent 90%);
+  }
+  @media (max-width:640px){.timeline::before{left:19px;}}
+  .chapter{
+    position:relative; padding-left:72px; padding-bottom:48px;
+    opacity:0; transform:translateY(18px); transition:opacity 0.6s ease, transform 0.6s ease;
+  }
+  @media (max-width:640px){.chapter{padding-left:52px;}}
+  .chapter.in-view{opacity:1; transform:translateY(0);}
+  .chapter:last-child{padding-bottom:0;}
+  .chapter-num{
+    position:absolute; left:0; top:0; width:56px; height:56px;
+    border-radius:50%; background:var(--bg-card); border:1px solid var(--border);
+    display:flex; align-items:center; justify-content:center;
+    font-family:var(--mono); font-size:14px; color:var(--accent-violet); font-weight:600;
+  }
+  @media (max-width:640px){.chapter-num{width:40px; height:40px; font-size:12px;}}
+  .chapter h3{font-family:var(--display); font-size:1.3rem; margin-bottom:10px; font-weight:600;}
+  .chapter p{color:var(--text-muted); max-width:64ch;}
+  .chapter-img{
+    margin-top:18px; max-width:480px; width:100%; border-radius:10px;
+    border:1px solid var(--border); display:block;
+  }
+
+  /* PROJECTS */
+  .project-grid{display:grid; grid-template-columns:1fr 1fr; gap:20px;}
+  @media (max-width:780px){.project-grid{grid-template-columns:1fr;}}
+  .card{
+    background:var(--bg-card); border:1px solid var(--border); border-radius:12px;
+    padding:26px; transition:border-color 0.2s ease, transform 0.2s ease;
+  }
+  .card:hover{border-color:rgba(108,92,231,0.4); transform:translateY(-3px);}
+  .card h3{font-family:var(--display); font-size:1.15rem; margin-bottom:10px;}
+  .card p{color:var(--text-muted); font-size:0.93rem; margin-bottom:16px;}
+  .pills{display:flex; flex-wrap:wrap; gap:7px;}
+  .pill{
+    font-family:var(--mono); font-size:11px; color:var(--accent-acid);
+    background:rgba(180,255,57,0.07); border:1px solid rgba(180,255,57,0.2);
+    padding:4px 9px; border-radius:5px;
+  }
+
+  /* CONTACT */
+  .contact-box{
+    background:var(--bg-card); border:1px solid var(--border); border-radius:14px;
+    padding:40px; max-width:600px;
+  }
+  @media (max-width:600px){.contact-box{padding:26px;}}
+  label{display:block; font-family:var(--mono); font-size:12px; color:var(--text-muted); margin-bottom:7px; margin-top:18px;}
+  label:first-of-type{margin-top:0;}
+  input, textarea{
+    width:100%; background:var(--bg-void); border:1px solid var(--border); border-radius:8px;
+    padding:12px 14px; color:var(--text-primary); font-family:var(--body); font-size:14px;
+    transition:border-color 0.2s;
+  }
+  input:focus, textarea:focus{border-color:var(--accent-violet); outline:none;}
+  textarea{resize:vertical; min-height:110px;}
+  .submit-row{margin-top:24px; display:flex; align-items:center; gap:14px;}
+  #form-status{font-family:var(--mono); font-size:13px; color:var(--accent-acid);}
+
+  /* ARCHITECTURE REVEAL */
+  .reveal-trigger{
+    display:inline-flex; align-items:center; gap:10px;
+    font-family:var(--mono); font-size:14px; color:var(--text-primary);
+    background:var(--bg-card); border:1px solid var(--border); border-radius:8px;
+    padding:14px 20px; cursor:pointer; transition:border-color 0.2s ease;
+  }
+  .reveal-trigger:hover{border-color:var(--accent-violet);}
+  .reveal-trigger .chev{transition:transform 0.25s ease; color:var(--accent-acid);}
+  .reveal-trigger.open .chev{transform:rotate(180deg);}
+
+  .reveal-panel{
+    max-height:0; overflow:hidden; transition:max-height 0.45s ease;
+  }
+  .reveal-panel.open{max-height:1400px;}
+  .reveal-inner{padding-top:36px;}
+
+  .flow{display:flex; flex-wrap:wrap; align-items:center; gap:14px; margin-bottom:18px;}
+  @media (max-width:700px){.flow{flex-direction:column; align-items:stretch;}}
+  .node{
+    background:var(--bg-card); border:1px solid var(--border); border-radius:10px;
+    padding:16px 18px; min-width:150px; flex:1;
+  }
+  .node .nlabel{font-family:var(--mono); font-size:11px; color:var(--accent-acid); margin-bottom:5px;}
+  .node .nname{font-family:var(--display); font-weight:600; font-size:0.95rem;}
+  .arrow{
+    font-family:var(--mono); color:var(--text-muted); font-size:18px; flex-shrink:0;
+  }
+  @media (max-width:700px){.arrow{transform:rotate(90deg); align-self:center;}}
+
+  .foundation{
+    margin-top:24px; padding-top:24px; border-top:1px dashed var(--border);
+    display:flex; gap:14px; flex-wrap:wrap;
+  }
+  .foundation .node{flex:1; min-width:200px; border-color:rgba(108,92,231,0.3);}
+
+  .stack-grid{
+    display:grid; grid-template-columns:repeat(auto-fit, minmax(150px,1fr));
+    gap:10px; margin-top:28px;
+  }
+  .stack-item{
+    display:flex; align-items:center; gap:8px;
+    font-family:var(--mono); font-size:12.5px; color:var(--text-muted);
+    background:var(--bg-card); border:1px solid var(--border); border-radius:7px; padding:10px 12px;
+  }
+  .stack-item .check{color:var(--accent-acid); font-weight:600;}
+
+  footer{
+    border-top:1px solid var(--border); padding:36px 0; position:relative; z-index:1;
+  }
+  .footer-inner{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;}
+  .footer-inner p{font-family:var(--mono); font-size:12px; color:var(--text-muted);}
+  .footer-links{display:flex; gap:20px; font-size:13px;}
+  .footer-links a{color:var(--text-muted); transition:color 0.2s;}
+  .footer-links a:hover{color:var(--accent-violet);}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="logo">kharee<span>.</span>dev</div>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">☰</button>
+    <div class="nav-links" id="navLinks">
+      <a href="#story">Story</a>
+      <a href="#projects">Projects</a>
+      <a href="#architecture">Stack</a>
+      <a href="#contact">Contact</a>
+      <div class="status"><span class="status-dot"></span>SYSTEM ONLINE</div>
+    </div>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow"><span class="status-dot" style="background:var(--accent-acid)"></span>AWS CERTIFIED &middot; SELF-TAUGHT &middot; BUILT IN PUBLIC</div>
+      <h1>This whole site is <span class="accent">the pitch.</span></h1>
+      <p class="lede">Every section you're about to scroll through is rendered from a live serverless API, Lambda, API Gateway, DynamoDB, the same fundamentals I'd be using on the job. I'm not telling you I can build this. You're looking at it.</p>
+      <div class="btn-row">
+        <a href="#story" class="btn btn-primary">Read the story</a>
+        <a href="#contact" class="btn btn-ghost">Get in touch</a>
+      </div>
+    </div>
+    <div class="console">
+      <div class="console-bar">
+        <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+        <span class="path">GET /pitch</span>
+      </div>
+      <div class="console-body" id="pitchConsole"></div>
+    </div>
+  </div>
+</section>
+
+<section id="story">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-num">// 02 — story_handler()</div>
+      <h2>How I got here</h2>
+      <p class="section-sub">Four chapters, in order, because order is the point.</p>
+    </div>
+    <div class="timeline" id="timeline"></div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-num">// 03 — project_handler()</div>
+      <h2>What I've shipped</h2>
+      <p class="section-sub">Built before being told to. Each one taught me something the last one didn't.</p>
+    </div>
+    <div class="project-grid" id="projectGrid"></div>
+  </div>
+</section>
+
+<section id="architecture">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-num">// 04 — terraform apply</div>
+      <h2>You're not reading about a stack.</h2>
+      <p class="section-sub">You're standing inside one. Every section above this line was served by it.</p>
+    </div>
+
+    <button class="reveal-trigger" id="revealTrigger">
+      <span>$ cat infrastructure.yml</span>
+      <span class="chev">▾</span>
+    </button>
+
+    <div class="reveal-panel" id="revealPanel">
+      <div class="reveal-inner">
+
+        <div class="flow">
+          <div class="node"><div class="nlabel">01</div><div class="nname">Browser</div></div>
+          <div class="arrow">→</div>
+          <div class="node"><div class="nlabel">CDN</div><div class="nname">CloudFront</div></div>
+          <div class="arrow">→</div>
+          <div class="node"><div class="nlabel">STATIC HOST</div><div class="nname">S3 (this page)</div></div>
+        </div>
+
+        <div class="flow">
+          <div class="node"><div class="nlabel">01</div><div class="nname">Browser</div></div>
+          <div class="arrow">→</div>
+          <div class="node"><div class="nlabel">ROUTE</div><div class="nname">API Gateway</div></div>
+          <div class="arrow">→</div>
+          <div class="node"><div class="nlabel">COMPUTE</div><div class="nname">Lambda ×4</div></div>
+          <div class="arrow">→</div>
+          <div class="node"><div class="nlabel">DATA</div><div class="nname">DynamoDB</div></div>
+        </div>
+
+        <div class="foundation">
+          <div class="node"><div class="nlabel">IaC</div><div class="nname">Terraform provisions all of it</div></div>
+          <div class="node"><div class="nlabel">CI/CD</div><div class="nname">GitHub Actions deploys on push</div></div>
+          <div class="node"><div class="nlabel">ACCESS</div><div class="nname">IAM, least-privilege per function</div></div>
+        </div>
+
+        <div class="stack-grid">
+          <div class="stack-item"><span class="check">✓</span>S3</div>
+          <div class="stack-item"><span class="check">✓</span>CloudFront</div>
+          <div class="stack-item"><span class="check">✓</span>Lambda</div>
+          <div class="stack-item"><span class="check">✓</span>API Gateway</div>
+          <div class="stack-item"><span class="check">✓</span>DynamoDB</div>
+          <div class="stack-item"><span class="check">✓</span>IAM</div>
+          <div class="stack-item"><span class="check">✓</span>Terraform</div>
+          <div class="stack-item"><span class="check">✓</span>GitHub Actions</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-num">// 05 — contact_handler()</div>
+      <h2>Let's talk</h2>
+      <p class="section-sub">This form posts straight to a validated Lambda function. Real backend, not a mailto link.</p>
+    </div>
+    <div class="contact-box">
+      <form id="contactForm">
+        <label for="name">Name</label>
+        <input id="name" name="name" type="text" required>
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" required>
+        <label for="message">Message</label>
+        <textarea id="message" name="message" required></textarea>
+        <div class="submit-row">
+          <button type="submit" class="btn btn-primary">Send message</button>
+          <span id="form-status"></span>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-inner">
+    <p>// built solo by Kharee Bellamy, end to end</p>
+    <div class="footer-links">
+      <a href="https://linkedin.com/in/kharee-bellamy-b2534b359" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/Gvld3iii" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ====================================================================
+   DATA — currently hardcoded to match the exact JSON shape returned by
+   the Lambda functions (lambda_handler, story_handler, project_handler).
+   Once those are deployed behind API Gateway, replace each block below
+   with a fetch() call to the real endpoint. The render functions don't
+   need to change — they already expect this exact shape.
+   ==================================================================== */
+
+/* ====================================================================
+   LIVE API — connected to real deployed AWS infrastructure.
+   Lambda + API Gateway, no more mock data.
+   ==================================================================== */
+
+const API_BASE = 'https://i3rpdmzp2m.execute-api.us-east-1.amazonaws.com';
+
+async function loadSite(){
+  try {
+    const [pitchRes, storyRes, projectsRes] = await Promise.all([
+      fetch(`${API_BASE}/pitch`),
+      fetch(`${API_BASE}/story`),
+      fetch(`${API_BASE}/project`)
+    ]);
+
+    const pitchData = await pitchRes.json();
+    const storyDataRaw = await storyRes.json();
+    const projectsData = await projectsRes.json();
+
+    // normalize story data: backend uses "Chapter"/"image_key", frontend renderer expects "chapter"/"image"
+    const storyData = storyDataRaw.map(ch => ({
+      chapter: ch.Chapter,
+      title: ch.title,
+      text: ch.text,
+      image: ch.image_key
+    }));
+
+    renderPitch(pitchData);
+    renderStory(storyData);
+    renderProjects(projectsData);
+    initChapterReveal();
+  } catch (err) {
+    console.error('Failed to load live data:', err);
+    document.getElementById('pitchConsole').innerHTML =
+      '<span style="color:var(--accent-flame)">// could not reach the API — check the endpoint or CORS settings</span>';
+  }
+}
+
+/* ---------------- RENDER: pitch console ---------------- */
+function renderPitch(data){
+  const el = document.getElementById('pitchConsole');
+  el.innerHTML = `
+    <span class="punc">{</span><br>
+    &nbsp;&nbsp;<span class="k">"name"</span><span class="punc">:</span> <span class="s">"${data.name}"</span><span class="punc">,</span><br>
+    &nbsp;&nbsp;<span class="k">"role"</span><span class="punc">:</span> <span class="s">"${data.role}"</span><span class="punc">,</span><br>
+    &nbsp;&nbsp;<span class="k">"skills"</span><span class="punc">:</span> <span class="arr">[${data.skills.map(s => `"${s}"`).join(', ')}]</span><span class="punc">,</span><br>
+    &nbsp;&nbsp;<span class="k">"why_hire_me"</span><span class="punc">:</span> <span class="s">"${data.why_hire_me}"</span><br>
+    <span class="punc">}</span><span class="cursor"></span>
+  `;
+}
+
+/* ---------------- RENDER: story timeline ---------------- */
+function renderStory(data){
+  const el = document.getElementById('timeline');
+  el.innerHTML = data.map(ch => `
+    <div class="chapter" data-chapter="${ch.chapter}">
+      <div class="chapter-num">${String(ch.chapter).padStart(2,'0')}</div>
+      <h3>${ch.title}</h3>
+      <p>${ch.text}</p>
+      ${ch.image ? `<img class="chapter-img" src="${ch.image}" alt="${ch.title}" loading="lazy">` : ''}
+    </div>
+  `).join('');
+}
+
+/* ---------------- RENDER: project cards ---------------- */
+function renderProjects(data){
+  const el = document.getElementById('projectGrid');
+  el.innerHTML = data.map(p => `
+    <div class="card">
+      <h3>${p.name}</h3>
+      <p>${p.description}</p>
+      <div class="pills">${p.tech_stack.map(t => `<span class="pill">${t}</span>`).join('')}</div>
+    </div>
+  `).join('');
+}
+
+/* ---------------- scroll reveal for chapters ---------------- */
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add('in-view');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.2 });
+
+function initChapterReveal(){
+  document.querySelectorAll('.chapter').forEach(ch => observer.observe(ch));
+}
+
+loadSite();
+
+/* ---------------- mobile nav toggle ---------------- */
+const navToggle = document.getElementById('navToggle');
+const navLinks = document.getElementById('navLinks');
+navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+/* ---------------- architecture reveal ---------------- */
+const revealTrigger = document.getElementById('revealTrigger');
+const revealPanel = document.getElementById('revealPanel');
+revealTrigger.addEventListener('click', () => {
+  revealTrigger.classList.toggle('open');
+  revealPanel.classList.toggle('open');
+});
+
+/* ---------------- contact form ---------------- */
+const form = document.getElementById('contactForm');
+const formStatus = document.getElementById('form-status');
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const payload = {
+    name: document.getElementById('name').value,
+    email: document.getElementById('email').value,
+    message: document.getElementById('message').value
+  };
+
+  formStatus.textContent = 'sending...';
+
+  try {
+    const res = await fetch(`${API_BASE}/contact`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+    const data = await res.json();
+
+    if(res.ok){
+      formStatus.textContent = data.message || 'message received — thanks for reaching out';
+      form.reset();
+    } else {
+      formStatus.textContent = data.error || 'something went wrong — try again';
+    }
+  } catch (err) {
+    formStatus.textContent = 'could not reach the server — try again shortly';
+  }
+});
+</script>
+
+</body>
+</html>

@@ -45,4 +45,12 @@ jobs:
         run: |
           cp project_handler.py lambda_function.py
           zip project.zip lambda_function.py
-          aws lambda update-function-code --function-name project_handler --zip-file
+          aws lambda update-function-code --function-name project_handler --zip-file fileb://project.zip
+          rm lambda_function.py project.zip
+
+      - name: Update contact Lambda
+        run: |
+          cp contact_handler.py lambda_function.py
+          zip contact.zip lambda_function.py
+          aws lambda update-function-code --function-name contact_handler --zip-file fileb://contact.zip
+          rm lambda_function.py contact.zip

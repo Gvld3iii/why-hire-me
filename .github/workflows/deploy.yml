@@ -31,26 +31,18 @@ jobs:
         run: |
           cp why_pitch.py lambda_function.py
           zip pitch.zip lambda_function.py
-          aws lambda update-function-code --function-name why-hire-me-pitch --zip-file fileb://pitch.zip
+          aws lambda update-function-code --function-name WhyHireMePitch --zip-file fileb://pitch.zip
           rm lambda_function.py pitch.zip
 
       - name: Update story Lambda
         run: |
           cp story_handler.py lambda_function.py
           zip story.zip lambda_function.py
-          aws lambda update-function-code --function-name why-hire-me-story --zip-file fileb://story.zip
+          aws lambda update-function-code --function-name story_handler --zip-file fileb://story.zip
           rm lambda_function.py story.zip
 
       - name: Update project Lambda
         run: |
           cp project_handler.py lambda_function.py
           zip project.zip lambda_function.py
-          aws lambda update-function-code --function-name why-hire-me-project --zip-file fileb://project.zip
-          rm lambda_function.py project.zip
-
-      - name: Update contact Lambda
-        run: |
-          cp contact_handler.py lambda_function.py
-          zip contact.zip lambda_function.py
-          aws lambda update-function-code --function-name why-hire-me-contact --zip-file fileb://contact.zip
-          rm lambda_function.py contact.zip
+          aws lambda update-function-code --function-name project_handler --zip-file
